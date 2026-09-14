@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>숫자 증가</title>
+
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        #num {
+            font-size: 50px;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>클릭 시 숫자 증가</h2>
+
+    <div id="num">0</div>
+
+    <button onclick="increase()">수 증가</button>
+    <button onclick="send()">전송</button>
+
+    <script>
+        let count = 0;
+
+        function increase() {
+            count++;
+            document.getElementById("num").innerText = count;
+        }
+
+        function send() {
+	    location.href='http://http://10.150.0.255:5001/'+count
+            count = 0;
+            document.getElementById("num").innerText = count;
+        }
+    </script>
+
+</body>
+</html>
