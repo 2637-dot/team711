@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED ON / OFF</title>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 30px;
+            font-family: Arial, sans-serif;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+        }
+        .btn-on {
+            background-color: #007bff;
+        }
+        .btn-off {
+            background-color: #dc3545;
+        }
+    </style>
+
+    <script>
+        // ON 버튼 눌렀을 때 실행
+        function ledOn() {
+            fetch('/on', { method: 'GET' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.text();
+            })
+            .then(result => {
+                // 성공 시 ON 이미지로 변경
+                document.getElementById('image').src = "static/on.jpeg";
+            })
+            .catch(error => {
+                alert("에러 발생: " + error);
+            });
+        }
+
+        // OFF 버튼 눌렀을 때 실행
+        function ledOff() {
+            fetch('/off', { method: 'GET' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.text();
+            })
+            .then(result => {
+                // 성공 시 OFF 이미지로 변경
+                document.getElementById('image').src = "static/off.jpeg";
+            })
+            .catch(error => {
+                alert("에러 발생: " + error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>LED ON / OFF</h1>
+
+    <!-- 기본 이미지 (꺼진 상태) -->
+    <img id="image" src="static/off.jpeg" alt="LED 상태">
+    <br><br>
+
+    <!-- 클릭 시 각각 ledOn(), ledOff() 함수 호출 -->
+    <button class="btn-on" onclick="ledOn()">ON</button>
+    <button class="btn-off" onclick="ledOff()">OFF</button>
+</body>
+</html>
