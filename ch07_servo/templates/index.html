@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servo Motor Control</title>
+</head>
+<body>
+    <h1>Servo Motor Control</h1>
+    <div>
+        <label for="number">Enter Angle</label>
+        <input type="number" id="number" placeholder="enter number (0~180)">
+        <button type="button" id="submitBtn">submit</button>
+    </div>
+
+    <!-- static/index.js 연결 -->
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
