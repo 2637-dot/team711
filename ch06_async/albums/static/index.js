@@ -1,7 +1,7 @@
-const todos = document.querySelector('#todos')
+const photos = document.querySelector('#photos')
 
 todos.addEventListener('click', function () {
-    fetch('https://jsonplaceholder.typicode.com/todos')   // 기본 method는 GET
+    fetch('https://jsonplaceholder.typicode.com/photos')   // 기본 method는 GET
         .then(function (response) {
             if (!response.ok) {
                 throw new Error('HTTP 오류: ' + response.status)
